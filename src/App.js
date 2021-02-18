@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
-import {Button, message} from 'antd'
-
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import Login from './pages/login/login.jsx';
+import Admin from './pages/admin/admin.jsx';
 export default class App extends Component {
 
-    handleClick = () => { message.success('成功啦...'); }
+    
     render() {
         return (
-            <div>
-              <Button type='primary' onClick={this.handleClick}>学习</Button>
-            </div>
+            <BrowserRouter>
+            <Switch>
+            <Route path='/' component={Login}></Route>
+            <Route path='/admin' component={Admin}></Route>
+            </Switch>
+            </BrowserRouter>
         )
     }
 }
