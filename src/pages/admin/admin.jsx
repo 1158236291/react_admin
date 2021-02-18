@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
-
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import memoryUtils from "../../utils/memoryUtils";
 export default class admin extends Component {
-    render() {
-        return (
-            <div>
-               admin 
-            </div>
-        )
+  render() {
+    const user = memoryUtils.user;
+
+    if (!user._id) {
+      return <Redirect to="/login"></Redirect>;
     }
+    return <div>Hello {user.username}</div>;
+  }
 }
