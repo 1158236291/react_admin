@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Menu } from "antd";
-import { PieChartOutlined, MailOutlined } from "@ant-design/icons";
 import "./leftNav.less";
 import logo from "../../assets/images/logo.png";
 import menuList from "../../config/menuconfig.js";
@@ -12,14 +11,14 @@ class leftNav extends Component {
     return menuList.map((item) => {
       if (!item.children) {
         return (
-          <Menu.Item key={item.key} icon={<PieChartOutlined />}>
+          <Menu.Item key={item.key} >
             <Link to={item.key}>{item.title}</Link>
           </Menu.Item>
         );
       } else {
         if(item.children.find(cItem => path.indexOf(cItem.key)===0)) { this.openKey = item.key }
         return (
-          <SubMenu key={item.key} icon={<MailOutlined />} title={item.title}>
+          <SubMenu key={item.key}  title={item.title}>
             {this.getMenuNodes(item.children)}
           </SubMenu>
         );
